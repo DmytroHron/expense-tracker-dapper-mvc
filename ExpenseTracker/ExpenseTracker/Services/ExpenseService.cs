@@ -1,6 +1,7 @@
 ﻿using ExpenseTracker.Models;
 using ExpenseTracker.DTOs.Expense;
 using ExpenseTracker.Repositories.Interfaces;
+using ExpenseTracker.Services.Interfaces;
 
 namespace ExpenseTracker.Services
 {

@@ -18,13 +18,29 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">CategoryId</label>
-            <input asp-for="CategoryId" class="form-control" />
+            <label class="form-label">Category</label>
+            <select asp-for="CategoryId" class="form-control">
+                <option value="">-- Select Category --</option>
+                @foreach (var c in ViewBag.Categories)
+                {
+                    <option value="@c.Id" selected="@(c.Id == Model.CategoryId)">
+                        @c.Name
+                    </option>
+                }
+            </select>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">AccountId</label>
-            <input asp-for="AccountId" class="form-control" />
+            <label class="form-label">Account</label>
+            <select asp-for="AccountId" class="form-control">
+                <option value="">-- Select Account --</option>
+                @foreach (var a in ViewBag.Accounts)
+                {
+                    <option value="@a.Id" selected="@(a.Id == Model.AccountId)">
+                        @a.Name
+                    </option>
+                }
+            </select>
         </div>
 
         <div class="mb-3">

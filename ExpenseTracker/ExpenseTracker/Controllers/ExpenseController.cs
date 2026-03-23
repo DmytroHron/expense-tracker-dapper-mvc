@@ -8,10 +8,17 @@ namespace ExpenseTracker.Controllers
     public class ExpenseController : Controller
     {
         private readonly IExpenseService _service;
+        private readonly ICategoryService _categoryService;
+        private readonly IAccountService _accountService;
 
-        public ExpenseController(IExpenseService service)
+        public ExpenseController(
+            IExpenseService service,
+            ICategoryService categoryService,
+            IAccountService accountService)
         {
             _service = service;
+            _categoryService = categoryService;
+            _accountService = accountService;
         }
 
         public IActionResult Index()
@@ -22,6 +29,9 @@ namespace ExpenseTracker.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Accounts = _accountService.GetAll();
+
             return View();
         }
 
@@ -29,7 +39,11 @@ namespace ExpenseTracker.Controllers
         public IActionResult Create(CreateExpenseDto dto)
         {
             if (!ModelState.IsValid)
+            {
+                ViewBag.Categories = _categoryService.GetAll();
+                ViewBag.Accounts = _accountService.GetAll();
                 return View(dto);
+            }
 
             var expense = new Expense
             {
@@ -51,6 +65,9 @@ namespace ExpenseTracker.Controllers
 
             if (expense == null)
                 return NotFound();
+
+            ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Accounts = _accountService.GetAll();
 
             var dto = new UpdateExpenseDto
             {

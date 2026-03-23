@@ -30,16 +30,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Expense}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
+    pattern: "{controller=Expense}/{action=Index}/{id?}");
 
 app.Run();
