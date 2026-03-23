@@ -1,0 +1,49 @@
+# Build
+
+bin/
+obj/
+
+# Visual Studio
+
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider / VS Code
+
+.idea/
+.vscode/
+
+# Logs
+
+*.log
+
+# OS
+
+.DS_Store
+Thumbs.db
+
+# Secrets
+
+appsettings.json
+appsettings.Development.json
+
+# NuGet
+
+*.nupkg
+packages/
+
+# Frontend
+
+node_modules/
+
+# Publish
+
+publish/
+
+# Database local files
+
+*.mdf
+*.ldf
