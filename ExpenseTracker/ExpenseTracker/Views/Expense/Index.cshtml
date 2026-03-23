@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ExpenseTracker.DTOs.Expense.ExpenseDetailsDto>
+
+<div class="container mt-4">
+    <h2 class="mb-3">Expenses</h2>
+
+    <a asp-action="Create" class="btn btn-primary mb-3">+ Add Expense</a>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Account</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Amount</td>
+                <td>@item.CategoryName</td>
+                <td>@item.AccountName</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
